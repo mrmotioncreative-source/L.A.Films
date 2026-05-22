@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.A. Films | Audiovisual de Alto Padrão para Imobiliárias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Configurações base e scroll suave */
+        html { 
+            scroll-behavior: smooth; 
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Paleta de cores DOURADA premium */
+        .bg-zinc-custom { background-color: #0a0a0a; } /* Preto mais profundo e sofisticado */
+        .text-gold-custom { color: #C5A059; }
+        .bg-gold-custom { background-color: #C5A059; }
+        .border-gold-custom { border-color: #C5A059; }
+
+        /* Efeito de Vidro (Glassmorphism) para o menu fixo */
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+        }
+
+        /* Elementos Decorativos: Brilho Dourado no Fundo */
+        .gold-glow-bg {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* EFEITO DE LUZ/BRILHO NO TEXTO DOURADO */
+        .text-shine {
+            background: linear-gradient(to right, #9e7f41 0%, #fdf5d3 50%, #9e7f41 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Botão do Som dos Vídeos */
+        .mute-btn {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .video-container:hover .mute-btn {
+            opacity: 1;
+        }
+
+        /* Gradientes e bordas */
+        .border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#18181b, #18181b) padding-box, linear-gradient(135deg, #C5A059, #3f3f46) border-box;
+        }
+    </style>
+</head>
+<body class="bg-zinc-custom text-gray-200 antialiased overflow-x-hidden relative pt-20">
+
+    <nav class="fixed w-full top-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#inicio" class="flex items-center gap-3 z-10 hover:scale-105 transition-transform">
+                <img src="LOGODOURADA.png" alt="L.A. Films Logo" class="h-8 md:h-10 w-auto object-contain">
+            </a>
+
+            <div class="flex items-center gap-5 md:gap-6 z-10">
+                <a href="https://www.instagram.com/lincolnalm_films/" target="_blank" class="text-gray-400 hover:text-gold-custom text-xl md:text-2xl transition-transform hover:scale-110">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1%20Lincoln!%20Vi%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20audiovisual%20imobili%C3%A1rio." target="_blank" class="text-gray-400 hover:text-green-500 text-xl md:text-2xl transition-transform hover:scale-110">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1%20Lincoln!%20Gostaria%20de%20agendar%20uma%20conversa%20para%20receber%20uma%20proposta." target="_blank" class="hidden md:inline-block bg-gold-custom hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition-all uppercase text-sm tracking-wider shadow-[0_0_15px_rgba(197,160,89,0.3)]">
+                    Fazer Orçamento
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative min-h-screen flex items-center py-10 overflow-hidden">
+        <div class="gold-glow-bg"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <div class="w-full md:w-2/5 flex justify-center order-1 md:order-2 mt-4 md:mt-0">
+                <div class="relative w-full max-w-[320px] md:max-w-[400px] aspect-[1080/1350] rounded-lg overflow-hidden shadow-[0_0_30px_rgba(197,160,89,0.2)] border border-zinc-800">
+                    <img src="FOTOMINHA.jpg" alt="Lincoln Almeida - L.A. Films" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white z-10">
+                        <p class="font-bold text-lg text-gold-custom">Lincoln Almeida</p>
+                        <p class="text-gray-300 text-sm font-light">Diretor de Fotografia Imobiliária</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-3/5 text-center md:text-left order-2 md:order-1">
+                <p class="text-white font-montserrat font-bold tracking-[0.2em] uppercase mb-4 text-xs md:text-sm opacity-80">L.A. Films</p>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-black text-shine leading-tight mb-6 uppercase">
+                    Soluções audiovisuais para imobiliárias e corretores.
+                </h1>
+                <p class="text-base md:text-lg text-gray-400 mb-8 max-w-2xl font-light mx-auto md:mx-0 leading-relaxed">
+                    O mercado imobiliário exige excelência. Elevamos o padrão da sua marca e dos seus imóveis através de produções cinematográficas que encantam compradores, geram autoridade e aceleram fechamentos. Uma parceria focada no seu VGV.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#altopadrao" class="bg-transparent border border-gold-custom text-gold-custom hover:bg-gold-custom hover:text-black font-bold py-3 px-8 rounded-full transition-all uppercase tracking-wider text-xs md:text-sm">
+                        Conhecer Soluções
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="altopadrao" class="py-20 md:py-24 bg-zinc-900 border-t border-zinc-800 relative">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <p class="text-gold-custom text-sm font-bold tracking-widest uppercase mb-3"><i class="fas fa-gem mr-2"></i> O Carro Chefe</p>
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase leading-tight">A Imponência do <br><span class="text-gold-custom">Alto Padrão</span></h2>
+                
+                <p class="text-gray-300 text-sm md:text-base mb-6 font-light italic border-l-2 border-gold-custom pl-4 text-left">
+                    "Um imóvel de luxo não pode ser mostrado de qualquer jeito. A percepção de valor começa na primeira imagem que o cliente vê."
+                </p>
+                
+                <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed text-left md:text-left">
+                    Produções grandiosas que geram engajamento imediato. O investimento em um vídeo cinematográfico é ínfimo perto da comissão que ele ajuda a fechar. Entregamos a emoção, o lifestyle e os detalhes que fazem o cliente querer morar lá.
+                </p>
+
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1%20Lincoln!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20v%C3%ADdeo%20de%20Alto%20Padr%C3%A3o." target="_blank" class="inline-block bg-gold-custom hover:bg-yellow-600 text-black font-bold py-4 px-10 rounded-full transition-all uppercase text-xs md:text-sm tracking-wider w-full md:w-auto shadow-lg shadow-gold-custom/20">
+                    Fale Comigo / Orçamento
+                </a>
+            </div>
+            
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="w-full max-w-[280px] md:max-w-[340px] aspect-[9/16] bg-black rounded-2xl border-gradient shadow-2xl p-2 relative video-container">
+                    <video id="vidAltoPadrao" autoplay muted loop playsinline class="w-full h-full object-cover rounded-xl">
+                        <source src="ALTOPADRAO1.mp4" type="video/mp4">
+                    </video>
+                    <button onclick="toggleMute('vidAltoPadrao', 'iconAltoPadrao')" class="mute-btn absolute bottom-4 right-4 bg-black/60 text-white p-3 rounded-full backdrop-blur-md hover:bg-gold-custom transition-all z-10">
+                        <i id="iconAltoPadrao" class="fas fa-volume-mute"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="parcerias" class="py-20 md:py-24 bg-zinc-custom border-t border-zinc-800 relative">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <div class="w-full md:w-1/2 flex justify-center order-2 md:order-1">
+                <div class="w-full max-w-[280px] md:max-w-[340px] aspect-[9/16] bg-black rounded-2xl border border-zinc-800 shadow-xl p-2 relative video-container">
+                    <video id="vidParceria" autoplay muted loop playsinline class="w-full h-full object-cover rounded-xl">
+                        <source src="IMOVELCOMUM.mp4" type="video/mp4">
+                    </video>
+                    <button onclick="toggleMute('vidParceria', 'iconParceria')" class="mute-btn absolute bottom-4 right-4 bg-black/60 text-white p-3 rounded-full backdrop-blur-md hover:bg-gold-custom transition-all z-10">
+                        <i id="iconParceria" class="fas fa-volume-mute"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 text-center md:text-left order-1 md:order-2">
+                <p class="text-gold-custom text-sm font-bold tracking-widest uppercase mb-3"><i class="fas fa-handshake mr-2"></i> Recorrência & Escala</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-6 uppercase leading-tight">Parcerias para <br><span class="text-gold-custom">Imobiliárias</span></h2>
+                
+                <p class="text-sm md:text-base text-gray-400 mb-6 leading-relaxed text-left md:text-left">
+                    Seu diferencial no mercado está na constância e na qualidade do que você publica. Nossa parceria mensal eleva o padrão visual de toda a sua carteira de imóveis.
+                </p>
+
+                <ul class="space-y-4 text-sm md:text-base text-gray-300 text-left mb-8 bg-zinc-900/50 p-6 rounded-xl border border-zinc-800">
+                    <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold-custom mt-1"></i> <div><strong>Evolução de Marca:</strong> Imagens de drone e edição profissional em imóveis do dia a dia.</div></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold-custom mt-1"></i> <div><strong>Frequência Estratégica:</strong> Tenha material de qualidade sempre disponível para as redes sociais.</div></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-check-circle text-gold-custom mt-1"></i> <div><strong>Economia Inteligente:</strong> Custo-benefício superior a contratar freelancers para cada captação.</div></li>
+                </ul>
+
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1!%20Tenho%20interesse%20em%20firmar%20uma%20parceria%20mensal%20para%20minha%20imobili%C3%A1ria." target="_blank" class="inline-block border border-gold-custom text-gold-custom hover:bg-gold-custom hover:text-black font-bold py-4 px-10 rounded-full transition-all uppercase text-xs md:text-sm tracking-wider w-full md:w-auto">
+                    Planejar Pacote Mensal
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 bg-zinc-900 border-t border-zinc-800 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase">Muito Além de Mostrar Casas. <br><span class="text-gold-custom">O Ecossistema Completo.</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Vender imóveis é vender relacionamento e autoridade. Produzimos conteúdos estratégicos para cada etapa do seu funil.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-zinc-800/80 p-6 rounded-2xl border-t-2 border-gold-custom shadow-xl relative hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-home text-3xl text-gold-custom mb-4"></i>
+                    <h3 class="text-white font-bold text-lg mb-2">Apresentação de Imóveis</h3>
+                    <p class="text-gray-400 text-sm mb-4 font-light">Takes de alto padrão e storytelling focado em despertar o desejo de compra.</p>
+                    <div class="text-xs font-bold text-gold-custom uppercase mt-auto bg-black/50 p-2 rounded text-center"><i class="fas fa-bullseye"></i> Gera Vendas</div>
+                </div>
+
+                <div class="bg-zinc-800/80 p-6 rounded-2xl border-t-2 border-gold-custom shadow-xl relative hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-map-marked-alt text-3xl text-gold-custom mb-4"></i>
+                    <h3 class="text-white font-bold text-lg mb-2">Curiosidades da Região</h3>
+                    <p class="text-gray-400 text-sm mb-4 font-light">"Qual o metro quadrado mais valorizado?" Vídeos para te posicionar como o especialista local.</p>
+                    <div class="text-xs font-bold text-gold-custom uppercase mt-auto bg-black/50 p-2 rounded text-center"><i class="fas fa-crown"></i> Gera Autoridade</div>
+                </div>
+
+                <div class="bg-zinc-800/80 p-6 rounded-2xl border-t-2 border-gold-custom shadow-xl relative hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-key text-3xl text-gold-custom mb-4"></i>
+                    <h3 class="text-white font-bold text-lg mb-2">Bastidores & Entrega</h3>
+                    <p class="text-gray-400 text-sm mb-4 font-light">A busca pelo imóvel ideal e a emoção real da entrega das chaves filmada com qualidade.</p>
+                    <div class="text-xs font-bold text-gold-custom uppercase mt-auto bg-black/50 p-2 rounded text-center"><i class="fas fa-heart"></i> Gera Prova Social</div>
+                </div>
+
+                <div class="bg-zinc-800/80 p-6 rounded-2xl border-t-2 border-gold-custom shadow-xl relative hover:-translate-y-2 transition-transform">
+                    <i class="fas fa-comments text-3xl text-gold-custom mb-4"></i>
+                    <h3 class="text-white font-bold text-lg mb-2">Vlogs & Q&A</h3>
+                    <p class="text-gray-400 text-sm mb-4 font-light">Respondendo dúvidas (financiamento, taxas) com captação profissional de áudio e luz.</p>
+                    <div class="text-xs font-bold text-gold-custom uppercase mt-auto bg-black/50 p-2 rounded text-center"><i class="fas fa-users"></i> Gera Relacionamento</div>
+                </div>
+
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="https://wa.me/5511941571824?text=Quero%20estruturar%20os%20conte%C3%BAdos%20estrat%C3%A9gicos%20do%20meu%20perfil" target="_blank" class="inline-block bg-white text-black hover:bg-gray-200 font-bold py-3 px-8 rounded-full transition-all uppercase text-sm tracking-wider">
+                    Desenvolver Minha Estratégia
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 bg-zinc-custom border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gold-custom text-sm font-bold tracking-widest uppercase mb-3">O Primeiro Contato é Visual</p>
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase">Fotografia Imobiliária & <span class="text-gold-custom">Drone</span></h2>
+            <p class="text-sm md:text-base text-gray-400 mb-12 max-w-2xl mx-auto font-light">Fotos tratadas, enquadramentos padronizados em HDR e ângulos exclusivos que demonstram a grandeza do imóvel. Faça o cliente parar de rolar o feed quando ver o seu anúncio.</p>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center mb-10">
+                <div class="w-full md:w-1/2 relative rounded-xl overflow-hidden border-2 border-zinc-800 group">
+                    <img src="FOTOANTES.jpg" alt="Foto Antes - Imóvel Comum" class="w-full aspect-video object-cover">
+                    <div class="absolute top-4 left-4 bg-black/80 text-white text-xs font-bold px-3 py-1 rounded uppercase backdrop-blur">Comum</div>
+                </div>
+                <div class="w-full md:w-1/2 relative rounded-xl overflow-hidden border-2 border-gold-custom shadow-[0_0_20px_rgba(197,160,89,0.3)] group">
+                    <img src="FOTODEPOIS.jpg" alt="Foto Depois - HDR L.A. Films" class="w-full aspect-video object-cover">
+                    <div class="absolute top-4 left-4 bg-gold-custom text-black text-xs font-bold px-3 py-1 rounded uppercase">Padrão L.A. Films</div>
+                </div>
+            </div>
+
+            <a href="https://wa.me/5511941571824?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20sess%C3%A3o%20de%20fotos%20e%20drone." target="_blank" class="inline-block bg-gold-custom hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full transition-all uppercase text-sm tracking-wider shadow-lg shadow-gold-custom/20 w-full sm:w-auto">
+                <i class="fas fa-camera mr-2"></i> Orçamento para Fotografia
+            </a>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 bg-zinc-900 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase">Documentação e <br><span class="text-gold-custom">Laudo Técnico</span></h2>
+                <p class="text-sm md:text-base text-gray-400 mb-6 leading-relaxed">
+                    A segurança jurídica que a sua imobiliária, o proprietário e o inquilino precisam. Realizamos captação audiovisual detalhada, em altíssima resolução, de cada canto do imóvel para compor laudos de vistoria precisos (entrada e saída).
+                </p>
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1!%20Preciso%20de%20informa%C3%A7%C3%B5es%20sobre%20v%C3%ADdeos/fotos%20para%20laudos%20de%20vistoria." target="_blank" class="inline-block border border-gold-custom text-gold-custom hover:bg-gold-custom hover:text-black font-bold py-3 px-8 rounded-full transition-all uppercase text-xs tracking-wider w-full sm:w-auto">
+                    Consultar Vistorias
+                </a>
+            </div>
+
+            <div class="w-full md:w-1/2">
+                <div class="w-full aspect-video rounded-xl overflow-hidden border border-zinc-700 shadow-xl grayscale hover:grayscale-0 transition-all duration-500">
+                    <img src="LAUDOFOTO.jpg" alt="Laudo Técnico Imobiliário" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 bg-zinc-custom border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <div class="w-full md:w-1/2 order-2 md:order-1 flex justify-center">
+                <div class="w-full aspect-video bg-black rounded-xl border border-zinc-800 shadow-xl p-1 relative video-container">
+                    <video id="vidObra" autoplay muted loop playsinline class="w-full h-full object-cover rounded-lg">
+                        <source src="ACOMPANHAMENTODEOBRA.mp4" type="video/mp4">
+                    </video>
+                    <button onclick="toggleMute('vidObra', 'iconObra')" class="mute-btn absolute bottom-4 right-4 bg-black/60 text-white p-3 rounded-full backdrop-blur-md hover:bg-gold-custom transition-all z-10">
+                        <i id="iconObra" class="fas fa-volume-mute"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 text-center md:text-left order-1 md:order-2">
+                <p class="text-gold-custom text-sm font-bold tracking-widest uppercase mb-3"><i class="fas fa-hard-hat mr-2"></i> Construtoras e Incorporadoras</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase">Acompanhamento <br><span class="text-gold-custom">de Obra</span></h2>
+                <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed">
+                    Mostre aos seus clientes e investidores a evolução do projeto. Captações periódicas com drone e estabilizadores terrestres para gerar relatórios visuais cronológicos, transparentes e altamente profissionais.
+                </p>
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20acompanhamento%20de%20obra." target="_blank" class="inline-block bg-gold-custom hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full transition-all uppercase text-xs tracking-wider w-full sm:w-auto shadow-lg shadow-gold-custom/20">
+                    Orçamento para Obra
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 bg-zinc-900 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <p class="text-gold-custom text-sm font-bold tracking-widest uppercase mb-3"><i class="fas fa-tractor mr-2"></i> Fazendas & Loteamentos</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase">Mapeamento e <br><span class="text-gold-custom">Tour Rural</span></h2>
+                <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed">
+                    Exiba a verdadeira grandeza de grandes áreas, fazendas, haras e loteamentos. Vídeos com drone destacando dimensões, relevos, infraestruturas, rios e divisas para compradores que estão a quilômetros de distância.
+                </p>
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1!%20Preciso%20de%20informa%C3%A7%C3%B5es%20sobre%20v%C3%ADdeo%20e%20mapeamento%20para%20%C3%A1rea%20rural." target="_blank" class="inline-block border border-gold-custom text-gold-custom hover:bg-gold-custom hover:text-black font-bold py-3 px-8 rounded-full transition-all uppercase text-xs tracking-wider w-full sm:w-auto">
+                    Solicitar Orçamento Rural
+                </a>
+            </div>
+
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="w-full aspect-video bg-black rounded-xl border border-zinc-800 shadow-xl p-1 relative video-container">
+                    <video id="vidRural" autoplay muted loop playsinline class="w-full h-full object-cover rounded-lg">
+                        <source src="RURAL.mp4" type="video/mp4">
+                    </video>
+                    <button onclick="toggleMute('vidRural', 'iconRural')" class="mute-btn absolute bottom-4 right-4 bg-black/60 text-white p-3 rounded-full backdrop-blur-md hover:bg-gold-custom transition-all z-10">
+                        <i id="iconRural" class="fas fa-volume-mute"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 bg-zinc-custom border-t border-zinc-800 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-custom/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-black text-white mb-10 md:mb-16 uppercase">O que dizem <br><span class="text-gold-custom">nossos clientes</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 text-left items-stretch">
+                
+                <div class="bg-zinc-800/80 p-6 md:p-8 rounded-2xl backdrop-blur-sm border border-zinc-700 relative flex flex-col hover:border-gold-custom/40 transition-all">
+                    <i class="fas fa-quote-left text-3xl md:text-4xl text-zinc-600 absolute top-4 right-6"></i>
+                    <div class="flex text-yellow-500 mb-4 text-xs md:text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-300 italic mb-6 flex-grow font-light">"O trabalho do Lincoln transmitiu exatamente a seriedade e a estrutura do meu consultório. O material construiu uma credibilidade enorme para o meu perfil, e o impacto nos agendamentos de novos pacientes foi real e muito rápido."</p>
+                    <div class="font-bold text-white mt-auto border-t border-zinc-700 pt-4 text-sm md:text-base">— Dra. Luana de Medeiros, <span class="text-xs md:text-sm font-normal text-gray-400">Odontologia Especializada</span></div>
+                </div>
+
+                <div class="bg-zinc-800/80 p-6 md:p-8 rounded-2xl backdrop-blur-sm border border-zinc-700 relative flex flex-col hover:border-gold-custom/40 transition-all">
+                    <i class="fas fa-quote-left text-3xl md:text-4xl text-zinc-600 absolute top-4 right-6"></i>
+                    <div class="flex text-yellow-500 mb-4 text-xs md:text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-300 italic mb-6 flex-grow font-light">"Os vídeos conseguiram destacar perfeitamente a qualidade e a textura dos nossos produtos. O visual ficou tão atrativo que refletiu direto no movimento da loja. Muitos clientes já chegam no balcão mostrando o vídeo do Instagram na hora de pedir."</p>
+                    <div class="font-bold text-white mt-auto border-t border-zinc-700 pt-4 text-sm md:text-base">— Açaí da 36, <span class="text-xs md:text-sm font-normal text-gray-400">Sorveteria</span></div>
+                </div>
+
+                <div class="bg-zinc-800/80 p-6 md:p-8 rounded-2xl backdrop-blur-sm border border-zinc-700 relative flex flex-col hover:border-gold-custom/40 transition-all">
+                    <i class="fas fa-quote-left text-3xl md:text-4xl text-zinc-600 absolute top-4 right-6"></i>
+                    <div class="flex text-yellow-500 mb-4 text-xs md:text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-300 italic mb-6 flex-grow font-light">"Na venda de imóveis, a apresentação visual é o que define o interesse do cliente. As imagens de drone e a edição dinâmica valorizaram o meu portfólio de uma forma incrível. O vídeo retém a atenção do comprador e facilita muito o contato comercial."</p>
+                    <div class="font-bold text-white mt-auto border-t border-zinc-700 pt-4 text-sm md:text-base">— Tiago Souza, <span class="text-xs md:text-sm font-normal text-gray-400">Corretor de Imóveis</span></div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 bg-gradient-to-r from-zinc-900 to-black p-8 md:p-12 rounded-3xl border border-zinc-800 shadow-[0_0_40px_rgba(197,160,89,0.1)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-black text-white uppercase mb-2">Vamos firmar <span class="text-gold-custom">essa parceria?</span></h3>
+                    <p class="text-gray-400 font-light text-sm md:text-base">Eleve a vitrine da sua imobiliária e feche mais negócios com o audiovisual a seu favor.</p>
+                </div>
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1%20Lincoln!%20Quero%20ser%20o%20seu%20pr%C3%B3ximo%20cliente%20e%20elevar%20meu%20marketing%20imobili%C3%A1rio." target="_blank" class="bg-gold-custom hover:bg-yellow-600 text-black font-bold py-4 px-10 rounded-full transition-all uppercase text-sm tracking-wider shadow-lg shadow-gold-custom/20 whitespace-nowrap">
+                    Seja nosso próximo cliente
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <a href="https://wa.me/5511941571824?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20as%20solu%C3%A7%C3%B5es%20audiovisuais." target="_blank" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-[0_4px_15px_rgba(34,197,94,0.4)] hover:scale-110 transition-all z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="bg-black py-10 md:py-12 border-t border-zinc-800 text-center relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <img src="LOGODOURADA.png" alt="L.A. Films" class="h-8 md:h-10 mx-auto mb-6 opacity-40 hover:opacity-100 transition-all filter drop-shadow-[0_0_10px_rgba(197,160,89,0.2)]">
+            <div class="flex justify-center gap-6 mb-6 md:mb-8">
+                <a href="https://www.instagram.com/lincolnalm_films/" class="text-gray-600 hover:text-gold-custom text-xl transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5511941571824?text=Ol%C3%A1%20Lincoln!%20Gostaria%20de%20agendar%20uma%20conversa%20para%20receber%20uma%20proposta." class="text-gray-600 hover:text-green-500 text-xl transition-transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="text-zinc-700 text-xs md:text-sm">© 2026 L.A. Films. Produção Audiovisual Cinematográfica. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMute(videoId, iconId) {
+            var video = document.getElementById(videoId);
+            var icon = document.getElementById(iconId);
+            
+            if (video.muted) {
+                video.muted = false;
+                icon.classList.remove("fa-volume-mute");
+                icon.classList.add("fa-volume-up");
+            } else {
+                video.muted = true;
+                icon.classList.remove("fa-volume-up");
+                icon.classList.add("fa-volume-mute");
+            }
+        }
+    </script>
+</body>
+</html>
